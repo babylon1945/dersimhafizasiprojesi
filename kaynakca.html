@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dersim Hafızası | Kaynakça</title>
+  <meta
+    name="description"
+    content="Dersim Hafızası için düzenlenmiş, kategorilere ayrılmış kaynakça sayfası."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #100d0b;
+      --panel: rgba(28, 23, 19, 0.88);
+      --panel-soft: rgba(255, 255, 255, 0.035);
+      --text: #f7efe6;
+      --muted: #cdbbab;
+      --line: rgba(255, 255, 255, 0.07);
+      --gold: #d9b87d;
+      --ember: #c76d42;
+      --sage: #6e8d82;
+      --blue: #7d93c9;
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.34);
+      --max: 1220px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    @keyframes ambientShift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate3d(-2.5%, 2%, 0) scale(1.07);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate3d(2%, -1.5%, 0) scale(1.02);
+        opacity: 0.56;
+      }
+    }
+
+    @keyframes panelDrift {
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.72;
+      }
+      50% {
+        transform: translate3d(-4%, 3%, 0);
+        opacity: 0.9;
+      }
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(199, 109, 66, 0.18), transparent 26%),
+        radial-gradient(circle at 86% 14%, rgba(125, 147, 201, 0.16), transparent 24%),
+        radial-gradient(circle at 82% 76%, rgba(110, 141, 130, 0.14), transparent 22%),
+        linear-gradient(180deg, #0d0a08 0%, #17120f 40%, #0b0907 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.36), transparent 88%);
+      animation: ambientShift 24s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.2) 100%);
+      animation: ambientShift 30s ease-in-out infinite alternate-reverse;
+    }
+
+    body > .ambient-layer {
+      position: fixed;
+      inset: -12%;
+      pointer-events: none;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(199, 109, 66, 0.14), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(125, 147, 201, 0.12), transparent 22%),
+        radial-gradient(circle at 70% 78%, rgba(110, 141, 130, 0.12), transparent 24%),
+        radial-gradient(circle at 28% 76%, rgba(217, 184, 125, 0.09), transparent 20%);
+      filter: blur(28px);
+      animation: ambientShift 26s ease-in-out infinite;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 42px 0 28px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(140deg, rgba(36, 28, 23, 0.94), rgba(18, 14, 12, 0.96)),
+        linear-gradient(90deg, rgba(217, 184, 125, 0.08), transparent 58%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -60px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 50% 50%, rgba(217, 184, 125, 0.2), transparent 64%);
+      filter: blur(2px);
+      pointer-events: none;
+      animation: panelDrift 18s ease-in-out infinite;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(217, 184, 125, 0.22);
+      background: rgba(217, 184, 125, 0.08);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #fff1cf);
+      box-shadow: 0 0 18px rgba(217, 184, 125, 0.45);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+      align-items: end;
+    }
+
+    .hero-copy {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      padding: 24px 10px 8px;
+    }
+
+    h1 {
+      margin: 12px 0 10px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+
+    .hero-copy p,
+    .section-head p,
+    .note {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .hero-actions,
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.86rem;
+      font-weight: 700;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .pill-link:hover,
+    .pill-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(217, 184, 125, 0.24);
+      background: rgba(217, 184, 125, 0.08);
+      outline: none;
+    }
+
+
+    .content {
+      padding: 6px 0 64px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin: 22px 0 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 0.95;
+      font-weight: 600;
+    }
+
+    .note-box {
+      padding: 18px 20px;
+      margin-bottom: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: var(--shadow);
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .group-card {
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .group-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    }
+
+    .group-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .group-title {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      font-weight: 800;
+      color: #fff8ef;
+    }
+
+    .group-desc {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.92rem;
+    }
+
+    .count {
+      flex: 0 0 auto;
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      color: color-mix(in srgb, var(--accent) 78%, white);
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .entry-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .entry {
+      display: grid;
+      gap: 6px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--panel-soft);
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .entry:hover,
+    .entry:focus-within {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .entry-title {
+      font-weight: 800;
+      color: #fff7ee;
+      line-height: 1.55;
+    }
+
+    .badge {
+      flex: 0 0 auto;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: color-mix(in srgb, var(--accent) 74%, white);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .entry-note {
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.7;
+      font-size: 0.9rem;
+    }
+
+    .entry-url {
+      color: color-mix(in srgb, var(--accent) 74%, white);
+      font-size: 0.8rem;
+      line-height: 1.65;
+      word-break: break-all;
+    }
+
+    .footer {
+      padding: 12px 0 64px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 980px) {
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(var(--max), calc(100% - 18px));
+      }
+
+      .hero {
+        padding-top: 18px;
+      }
+
+      .hero-card,
+      .group-card,
+      .note-box {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-layer" aria-hidden="true"></div>
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-card">
+          <span class="eyebrow">Kaynakça</span>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1>Kaynakça</h1>
+              <p>
+                Bu sayfa, seçili resmî arşiv, mevzuat, basın ve destekleyici araştırma bağlantılarını düzenlenmiş bir kaynakça akışı halinde toplar.
+              </p>
+              <div class="hero-actions">
+                <a class="pill pill-link" href="index.html">Zaman çizgisine dön</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <h2>Kategoriler</h2>
+          </div>
+        </div>
+
+        <div class="note-box">
+          <p class="note">
+            Kaynakça, "resmî arşiv ve mevzuat" ile "destekleyici basın ve akademik okumalar" arasında ayrım yapar.
+            Özellikle 1937-1938 başlıklarında web kopyaları, orijinal BCA/BKKK suretlerinin yerine geçmez; bu nedenle
+            ilgili kartlarda bu durum açıkça işaretlenmiştir.
+          </p>
+          <div class="stat-row">
+            <div class="pill">8 ana grup <span>/ tematik düzen</span></div>
+            <div class="pill">30+ seçili bağlantı <span>/ temizlenmiş liste</span></div>
+            <div class="pill">Resmî ağırlık <span>/ araştırma için önce birincil metin</span></div>
+          </div>
+        </div>
+
+        <div class="source-grid" id="sourceGrid"></div>
+
+        <div class="footer">
+          Kaynakça sayfası, statik olarak HTML/CSS/JS ile oluşturuldu. Yeni kaynak eklenecekse aynı sınıflama ile
+          resmî kurumları ve kopya/yorum niteliğindeki bağlantıları ayrı tutmak daha sağlam bir arşiv mantığı verir.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const sourceGroups = [
+      {
+        title: "Devlet Arşivleri ve Osmanlı Rehberleri",
+        description: "Osmanlı ve Cumhuriyet dönemi belge taramalarında ana giriş noktası olan resmî arşiv rehberleri ve yayınları.",
+        accent: "#d9b87d",
+        entries: [
+          {
+            title: "Osmanlı Arşivi Rehberi (2017)",
+            type: "Resmî PDF",
+            note: "Fon yapısı, katalog mantığı ve belgeye ulaşma akışını verir.",
+            href: "https://www.devletarsivleri.gov.tr/varliklar/dosyalar/eskisiteden/yayinlar/osmanli-arsivi-yayinlar/osmanli_arsivi_rehberi_2017.pdf"
+          },
+          {
+            title: "Başbakanlık Osmanlı Arşivi Rehberi",
+            type: "Rehber",
+            note: "Klasik arşiv serileri için tamamlayıcı rehber metin.",
+            href: "https://www.devletarsivleri.gov.tr/varliklar/dosyalar/eskisiteden/yayinlar/osmanli-arsivi-yayinlar/BA%C5%9EBAKANLIK%20OSMANLI%20AR%C5%9E%C4%B0V%20REHBER%C4%B0.pdf"
+          },
+          {
+            title: "Devlet Arşivleri yayın sayfası PDF",
+            type: "Resmî PDF",
+            note: "Kullanılan derlemede referans verilen kurumsal yayın bağlantısı.",
+            href: "https://www.devletarsivleri.gov.tr/yayinlar/45318a6a-b112-4d50-ac54-e820c07cde79.pdf"
+          },
+          {
+            title: "Osmanlı Yer Adları",
+            type: "Rehber",
+            note: "Dersim-Tunceli ad ve bağlılık değişimlerini izlemek için kritik resmî yayın.",
+            href: "https://www.devletarsivleri.gov.tr/varliklar/dosyalar/eskisiteden/yayinlar/genel-mudurluk-yayinlar/osmanli_yer_adlari.pdf"
+          },
+          {
+            title: "Osmanlı Belgelerinde Ermeniler (1915-1920)",
+            type: "Belge Derlemesi",
+            note: "1915 başlığında Dersim'e atıflı kayıtları kurum yayını içinde takip etmeye yarar.",
+            href: "https://www.devletarsivleri.gov.tr/varliklar/dosyalar/eskisiteden/yayinlar/osmanli-arsivi-yayinlar/Osmanl%C4%B1_belgelerinde_ermeniler_1915_1920.pdf"
+          },
+          {
+            title: "DAB yayınlı belge dosyası (fileId=40)",
+            type: "Belge PDF",
+            note: "1915'e ilişkin Dersim atıflı belge kopyası olarak kullanılan kurumsal bağlantı.",
+            href: "https://www.devletarsivleri.gov.tr/cdn/file/download?fileId=40"
+          }
+        ]
+      },
+      {
+        title: "Arşiv Katalogları",
+        description: "Doğrudan katalog taraması, dosya isteme ve arşiv kodu ile iz sürme için kullanılan kayıt girişleri.",
+        accent: "#c76d42",
+        entries: [
+          {
+            title: "Devlet Arşivleri Katalog Tarama",
+            type: "Katalog",
+            note: "BOA ve BCA kodlarıyla sorgulama, suret talebi ve yerinde inceleme için ana adres.",
+            href: "https://katalog.devletarsivleri.gov.tr/"
+          }
+        ]
+      },
+      {
+        title: "TBMM, Anayasa ve Mevzuat Metinleri",
+        description: "Birincil kanun metinleri, anayasal çerçeve ve TBMM kurumsal metinleri.",
+        accent: "#7d93c9",
+        entries: [
+          {
+            title: "2884 sayılı Tunceli Vilayetinin İdaresi Hakkında Kanun",
+            type: "TBMM PDF",
+            note: "Tunceli'nin özel idari rejimini tanımlayan ana metin.",
+            href: "https://www.tbmm.gov.tr/tutanaklar/kanunlar_kararlar/kanuntbmmc016/kanuntbmmc016/kanuntbmmc01602884.pdf"
+          },
+          {
+            title: "2885 sayılı Kanun",
+            type: "TBMM PDF",
+            note: "Tunceli vilayetinin kuruluşu ve bağlı kaza düzenini verir.",
+            href: "https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc016/kanuntbmmc016/kanuntbmmc01602885.pdf"
+          },
+          {
+            title: "1924 Teşkilat-ı Esasiye Kanunu metin ve değişiklik",
+            type: "TBMM",
+            note: "1925'te yürürlükte olan anayasal zemin için kurumsal sayfa.",
+            href: "https://www.tbmm.gov.tr/anayasa/yirmi-dort-teskilati-esasiye-kanunu-metin-degisiklik"
+          },
+          {
+            title: "1924 Teşkilat-ı Esasiye Kanunu ilk hali",
+            type: "PDF",
+            note: "Orijinal metin görünümü için TBMM PDF kopyası.",
+            href: "https://www.tbmm.gov.tr/files/anayasa/docs/1924/1924-ilkhali/1924-ilkhali.pdf"
+          },
+          {
+            title: "TBMM Anayasa arşivi",
+            type: "Kurumsal",
+            note: "1921 ve 1924 metinlerini geniş anayasal bağlamda takip etmek için.",
+            href: "https://www.tbmm.gov.tr/anayasa/anayasa"
+          },
+          {
+            title: "TBMM yayın dosyası",
+            type: "TBMM PDF",
+            note: "PDF derlemede referans geçen yardımcı kurumsal yayın bağlantısı.",
+            href: "https://cdn.tbmm.gov.tr/TbmmWeb/Yayinlar/Dosya/50585885-5266-4c5e-97ed-018672b830fd.pdf"
+          }
+        ]
+      },
+      {
+        title: "OHAL, Güvenlik Hukuku ve Nüfus Verisi",
+        description: "1990-2000 ekseni için doğrudan kullanılabilecek resmî mevzuat ve veri bağlantıları.",
+        accent: "#6e8d82",
+        entries: [
+          {
+            title: "OHAL'in 8 ilde yeniden uzatılmasına dair TBMM Kararı No: 87",
+            type: "TBMM PDF",
+            note: "Tunceli'nin OHAL kapsamını açıkça gösteren birincil karar metni.",
+            href: "https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc073/karartbmmc073/karartbmmc07300087.pdf"
+          },
+          {
+            title: "2935 sayılı Olağanüstü Hal Kanunu",
+            type: "Kanun",
+            note: "1990'lar OHAL rejiminin genel hukuki zemini.",
+            href: "https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc066/kanunmgkc066/kanunmgkc06602935.pdf"
+          },
+          {
+            title: "285 sayılı KHK",
+            type: "KHK",
+            note: "OHAL Bölge Valiliği ihdası ve yönetsel çerçeve.",
+            href: "https://cdn.tbmm.gov.tr/KKBSPublicFile/D22/Y1/T1/KanunMetni/7e70cdd2-fccf-495b-b2fd-6c35fd5664e5.html"
+          },
+          {
+            title: "3713 sayılı Terörle Mücadele Kanunu",
+            type: "Mevzuat",
+            note: "1991 sonrası güvenlik hukukunun temel dayanaklarindan biri.",
+            href: "https://www.aile.gov.tr/eyhgm/mevzuat/ulusal-mevzuat/kanunlar/terorle-mucadele-kanunu/"
+          },
+          {
+            title: "TÜİK veri indirme bağlantısı",
+            type: "Veri",
+            note: "1990 ve 2000 nüfus verileri için kullanılan doğrudan veri noktası.",
+            href: "https://veriportali.tuik.gov.tr/api/tr/data/downloads?p=VJRxp0ZMgQqlyvZi9XXbvARQzHmMPTe99V%2BEvdN7Citn4V%2FIZgJNCUEAW3kqfe4NlUfUvSnIAv2ERk%2B9JqpN4DKz7FxcYiKHU9WUEWBGqv%2Blv0Cir5lURWy2Gl0xPTDiybaD3xmDkPYICGUAyH6TQA0oy50E3aV%2Bd2pjSvpQ3w1QYQLLqRUi2poAP3HL%2BosJ&t=i"
+          },
+          {
+            title: "SBB İç Göçler 1965-2000 raporu",
+            type: "Kamu Raporu",
+            note: "Tunceli'nin göç ve nüfus hareketlerini daha geniş kamu verisi bağlamına yerleştirir.",
+            href: "https://www.sbb.gov.tr/wp-content/uploads/2018/11/Turkiyede_Ic_Gocler_ve_Goc_Edenlerin_Nitelikleri_1965-2000.pdf"
+          }
+        ]
+      },
+      {
+        title: "Askeri ve Kurumsal Yardımcı Kaynaklar",
+        description: "MSB ve askeri kütüphane düzeyindeki kurumsal bağlantılar; doğrudan belge yerine destekleyici kurumsal referans olarak kullanılmalı.",
+        accent: "#c76d42",
+        entries: [
+          {
+            title: "MSB Erzurum ve çevresinde Ermeni faaliyetleri yayını",
+            type: "MSB PDF",
+            note: "1915 bağlamında DH.SFR referanslarını kurumsal yayında tekrar izlemeye yarar.",
+            href: "https://www.msb.gov.tr/Content/Upload/Docs/askeritariharsiv/58-%20bdh_erzurum_cevresi_ermeni_1914-1918.pdf"
+          },
+          {
+            title: "Askeri Müze kütüphane konu listesi",
+            type: "Katalog",
+            note: "Askeri yayın ve kütüphane izlemesini destekleyen katalog bağlantısı.",
+            href: "https://askerimuze.msb.gov.tr/content/img/kutuphane/koleksiyon/kitap_konu.pdf"
+          }
+        ]
+      },
+      {
+        title: "Basın Arşivleri ve Dijital Koleksiyonlar",
+        description: "Dönem gazeteleri, süreli yayın taramaları ve görsel izler için kullanılabilecek birincil ya da birincile yakın erişim noktalar.",
+        accent: "#d9b87d",
+        entries: [
+          {
+            title: "Atatürk Kitaplığı Süreli Yayınlar",
+            type: "Koleksiyon",
+            note: "Kurumsal gazete ve dergi taraması için ana koleksiyon.",
+            href: "https://ataturkkitapligi.ibb.gov.tr/tr/Kitaplik/Koleksiyonlar/Sureli-Yayinlar/25"
+          },
+          {
+            title: "Milli Kütüphane Dijital süreli yayın kaydı",
+            type: "Katalog",
+            note: "İkdam gibi Osmanlı son dönemi basın nüshalarına issue bazlı giriş.",
+            href: "https://dijital-kutuphane.mkutup.gov.tr/tr/periodicals/catalog/issue/60095"
+          },
+          {
+            title: "Tan gazetesi 17 Haziran 1937, sayfa 1",
+            type: "Gazete",
+            note: "1937 harekat dilini görmek için doğrudan sayfa görüntüsü.",
+            href: "https://www.gastearsivi.com/gazete/tan/1937-06-17/1"
+          }
+        ]
+      },
+      {
+        title: "Kopya Metinler ve Tartışmalı Web Kopyaları",
+        description: "Araştırmada kullanılabilir ama doğrudan resmî suret yerine geçmeyen metin kopyaları; dikkatle işaretlenmiştir.",
+        accent: "#7d93c9",
+        entries: [
+          {
+            title: "4 Mayıs 1937 karar metni web kopyası",
+            type: "Kopya Metin",
+            note: "Sık atıf alan metin; orijinal BCA/BKKK sureti yerine geçmez.",
+            href: "https://static.bianet.org/files/doc_files/000/000/009/original/4_may_s_karar_.doc"
+          },
+          {
+            title: "Şark Islahat Planı kopya metni",
+            type: "Kopya Metin",
+            note: "Web üzerinde dolaşan metin; resmî BCA karşılaştırması ile kullanılmalı.",
+            href: "https://www.scribd.com/doc/243314475/Sark-islahat-plani-kurtler-hakkinda-pdf"
+          },
+          {
+            title: "Gazete Duvar: Dersim'in gizli kanunu",
+            type: "Yorum/Yazı",
+            note: "İkincil okuma; mevzuat ve zabıtla çapraz kontrol gerektirir.",
+            href: "https://www.gazeteduvar.com.tr/dersimin-gizli-kanunu-makale-1646930"
+          },
+          {
+            title: "Görüş21: Dersim Harekâtı'nın hikayesi",
+            type: "Yorum/Yazı",
+            note: "6 Ağustos 1938 kararına dair anlatıları toplar; resmî belge yerine değil, destekleyici okuma olarak kullanılmalı.",
+            href: "https://gorus21.com/dersim-uzerine-3-bolum-dersim-harekatinin-hikayesi/"
+          },
+          {
+            title: "Kent ve Demiryolu: Tunceli İstasyonu ve Dersimlilerin tren algısı",
+            type: "Makale",
+            note: "6 Ağustos 1938 sürgün cetvellerine dair ikincil bağlam sunar.",
+            href: "https://kentvedemiryolu.com/tunceli-istasyonu-ve-dersimlilerin-tren-algisi/"
+          }
+        ]
+      },
+      {
+        title: "Akademik ve Destekleyici Araştırmalar",
+        description: "Kronolojiyi genişletmek için akademik okumalar, makaleler ve bibliyografik destek bağlantıları.",
+        accent: "#6e8d82",
+        entries: [
+          {
+            title: "DergiPark makalesi",
+            type: "Akademik",
+            note: "PDF'de referans geçen destekleyici akademik kayıt.",
+            href: "https://dergipark.org.tr/tr/pub/diclesosbed/article/1276848"
+          },
+          {
+            title: "DergiPark article file (790312)",
+            type: "Akademik PDF",
+            note: "İndirilebilir akademik makale dosyası.",
+            href: "https://dergipark.org.tr/en/download/article-file/790312"
+          },
+          {
+            title: "DergiPark article file (5023268)",
+            type: "Akademik PDF",
+            note: "Devlet söylemi ve basın dili için yardımcı okuma olarak kullanılabilir.",
+            href: "https://dergipark.org.tr/tr/download/article-file/5023268"
+          },
+          {
+            title: "Academia: 1937-1938 Yılları Arasında Basında Dersim",
+            type: "Akademik Kopya",
+            note: "Basın dilini karşılaştırmalı okumak için faydalı bir derleme.",
+            href: "https://www.academia.edu/11343470/1937_1938_Y%C4%B1llar%C4%B1_Aras%C4%B1nda_Bas%C4%B1nda_Dersim"
+          },
+          {
+            title: "ResearchGate: Atatürk-İnönü ayrılığı ve Dersim Olayları",
+            type: "Akademik Kopya",
+            note: "1937 devlet söylemi ve meclis tartışmalarını ikincil düzeyde destekler.",
+            href: "https://www.researchgate.net/publication/312481353_Ataturk-Inonu_ayriligi_ve_Dersim_Olaylari"
+          },
+          {
+            title: "SADAB: Kadri Cemilpaşa'nın Kürt isyanlarındaki rolü",
+            type: "Makale PDF",
+            note: "1925 ve sonrasına dair yardımcı bağlamsal okuma.",
+            href: "https://www.sadab.org/FileUpload/bs701867/File/27.kadri_cemilpasa%E2%80%99nin_kurt_isyanlarindaki_rolu.pdf"
+          },
+          {
+            title: "Evrensel: Dersim'de 'Tunc Eli' kırımı",
+            type: "Gazete/Yorum",
+            note: "Resmî kaynaklarla karşılaştırmalı okunması gereken ikincil haber yazısı.",
+            href: "https://www.evrensel.net/haber/383427/dersimde-tunc-eli-kirimi"
+          }
+        ]
+      }
+    ];
+
+    const sourceGrid = document.getElementById("sourceGrid");
+
+    function renderGroups() {
+      sourceGrid.innerHTML = sourceGroups
+        .map((group) => {
+          const entries = group.entries
+            .map((entry) => {
+              return `
+                <a class="entry" href="${entry.href}" target="_blank" rel="noreferrer noopener">
+                  <div class="entry-top">
+                    <span class="entry-title">${entry.title}</span>
+                    <span class="badge">${entry.type}</span>
+                  </div>
+                  <span class="entry-note">${entry.note}</span>
+                  <span class="entry-url">${entry.href}</span>
+                </a>
+              `;
+            })
+            .join("");
+
+          return `
+            <section class="group-card" style="--accent: ${group.accent}">
+              <div class="group-head">
+                <div>
+                  <h3 class="group-title">${group.title}</h3>
+                  <p class="group-desc">${group.description}</p>
+                </div>
+                <span class="count">${group.entries.length} kaynak</span>
+              </div>
+              <div class="entry-list">${entries}</div>
+            </section>
+          `;
+        })
+        .join("");
+    }
+
+    renderGroups();
+  </script>
+</body>
+</html>
